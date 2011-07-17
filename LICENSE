@@ -1,0 +1,11 @@
+--2011-07-17 12:20:35--  http://www.gnu.org/licenses/gpl-3.0.txt
+Resolviendo www.gnu.org... 140.186.70.148
+Connecting to www.gnu.org|140.186.70.148|:80... conectado.
+Petición HTTP enviada, esperando respuesta... 200 OK
+Longitud: 35147 (34K) [text/plain]
+Saving to: `gpl-3.0.txt'
+
+     0K .......... .......... .......... ....                 100% 59,6K=0,6s
+
+2011-07-17 12:20:36 (59,6 KB/s) - `gpl-3.0.txt' saved [35147/35147]
+
