@@ -19,9 +19,33 @@ const char* program_name;
 void print_help()
 {
 	printf("USAGE: %s options [arguments]\n", program_name);
+	printf("     -s   --status			Gets FCD current status\n");
 	printf("     -f   --frequency <frequency>	Sets FCD frequency in Hz\n");
 	printf("     -c   --correction <correction>	Sets frequency correction in ppm\n");
 	printf("     -h   --help       			Shows this help\n");
+}
+
+void print_status()
+{
+	int stat;
+
+	stat = fcdGetMode();
+
+	if (stat == FCD_MODE_NONE)
+	{
+		printf("No FCD Detected.\n");
+		return;
+	}
+	else if (stat == FCD_MODE_BL)
+	{
+		printf("FCD present in bootloader mode.\n");
+		return;
+	}
+	else	
+	{
+		printf("FCD present in application mode.\n");
+		return;
+	}
 }
 
 int main(int argc, char* argv[])
@@ -32,9 +56,10 @@ int main(int argc, char* argv[])
 
 	/* getopt infrastructure */
 	int next_option;
-	const char* const short_options = "f:c:h";
+	const char* const short_options = "sf:c:h";
 	const struct option long_options[] =
 	{
+		{ "status", 0, NULL, 's' },
 		{ "frequency", 1, NULL, 'f' },
 		{ "correction", 1, NULL, 'c' },
 		{ "help", 0, NULL, 'h' }
@@ -63,6 +88,9 @@ int main(int argc, char* argv[])
 		{
 			case 'h' :
 				print_help();
+				exit(EXIT_SUCCESS);
+			case 's' :
+				print_status();
 				exit(EXIT_SUCCESS);
 			case 'f' :
 				freq = atoi(optarg);
