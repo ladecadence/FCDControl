@@ -1,3 +1,6 @@
+0.3 - July 18, 2011:
+	Third commit. Added firmware version to status option.
+
 0.2 - July 18, 2011:
 	Second commit. Added option to ask FCD status. 
 	Changed executable name.

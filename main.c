@@ -28,6 +28,7 @@ void print_help()
 void print_status()
 {
 	int stat;
+	char version[20];
 
 	stat = fcdGetMode();
 
@@ -44,6 +45,8 @@ void print_status()
 	else	
 	{
 		printf("FCD present in application mode.\n");
+		stat = fcdGetFwVerStr(version);
+		printf("FCD firmware version: %s.\n", version);
 		return;
 	}
 }
